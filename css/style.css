@@ -1,0 +1,673 @@
+/*
+|--------------------------------------------------------------------------
+| Paleta de Colores y Variables CSS
+|--------------------------------------------------------------------------
+| Uso de variables CSS (personalizadas) para definir colores opacos y neutros,
+| facilitando cambios de estilo globales de manera rápida.
+*/
+:root {
+    /* Fondo principal: Gris Oscuro/Negro Suave (Look moderno y opaco) */
+    --color-bg-primary: #1a1a1a; 
+    /* Texto principal: Blanco Roto/Gris Claro (Contraste estético) */
+    --color-text-primary: #e0e0e0;
+    /* Color de acento: Gris Metálico o Plata (Para botones y hover, estilo Y2K) */
+    --color-accent: #b0b0b0;
+    /* Fondo secundario (para secciones o tarjetas): Gris un poco más claro */
+    --color-bg-secondary: #2c2c2c;
+    /* Fuente principal (Cargada via Google Fonts) */
+    --font-primary: 'Montserrat', sans-serif;
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Reset Básico y Estilos Globales
+|--------------------------------------------------------------------------
+| Resetear estilos por defecto para un lienzo limpio y consistente.
+*/
+* {
+    /* box-sizing: Mantiene el padding y border dentro del ancho/alto del elemento */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    /* Mejorar la renderización del texto en pantallas modernas */
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+/* Estilos de Elementos Comunes */
+ul {
+    list-style: none; /* Quitar puntos de las listas */
+}
+a {
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+    color: inherit; /* Heredar el color del texto del padre */
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Estilos del Encabezado (HEADER)
+|--------------------------------------------------------------------------
+| Diseño de la barra superior.
+*/
+.main-header {
+    display: flex;
+    /* space-between: Mueve el logo a la izquierda y el nav a la derecha */
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: var(--color-bg-secondary);
+    /* Sombra suave para dar profundidad */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+}
+
+/* Estilo para el nombre de la tienda (H1: UNDER STUDIO) */
+.store-name {
+    font-size: 1.8rem;
+    font-weight: 800; /* Extra-bold para impacto */
+    color: var(--color-accent); /* Color de acento para el nombre */
+    letter-spacing: 3px; /* Espaciado estético */
+    transition: color 0.3s ease;
+}
+
+.store-name:hover {
+    color: var(--color-text-primary); /* Efecto sutil al pasar el ratón */
+}
+
+/* Estilos de la Navegación (NAV) */
+.main-nav ul {
+    display: flex;
+    gap: 30px; /* Espacio entre los elementos del menú */
+}
+
+.nav-link {
+    font-size: 1rem;
+    font-weight: 600;
+    /* Transiciones para que los efectos hover sean suaves */
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    padding-bottom: 5px;
+}
+
+.nav-link:hover,
+.nav-link.current {
+    /* Estado activo o al pasar el ratón */
+    color: var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+}
+
+/* Estilo especial para el botón CTA "Comprar" */
+.cta-button {
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary) !important; /* Texto oscuro sobre el acento */
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 800;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-bottom: none !important; /* Asegurar que no tenga subrayado */
+}
+
+.cta-button:hover {
+    background-color: #909090; 
+    transform: translateY(-2px); /* Efecto de "levantamiento" estético */
+}
+/*
+|--------------------------------------------------------------------------
+| Estilos de la HERO SECTION (Banner Principal)
+|--------------------------------------------------------------------------
+| Establece un diseño que ocupa la mayor parte de la pantalla para generar impacto.
+*/
+.hero-section {
+    /* Ocupa el 90% de la altura de la ventana visible (viewport height) */
+    height: 90vh; 
+    position: relative;
+    overflow: hidden;
+    /* Centra el contenido (título y botón) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos de la imagen de fondo */
+.hero-background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-size: cover: Asegura que la imagen siempre cubra el área */
+    background-size: cover;
+    background-position: center;
+    /* Opacidad: Clave para el look opaco y estético. Hacemos la imagen semitransparente. */
+    opacity: 0.35; 
+    transition: opacity 0.5s ease;
+}
+
+/* Contenedor del Título y Botón (debe ir encima de la imagen) */
+.hero-content {
+    /* z-index: Asegura que este contenido se muestre por encima de la imagen de fondo */
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 0 20px;
+    /* Aplicar una pequeña sombra al texto para que resalte sobre la imagen */
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+}
+
+.hero-content h2 {
+    /* Título con gran impacto visual */
+    font-size: clamp(2.5rem, 5vw, 4.5rem); /* Tamaño responsivo (ajusta según el ancho de pantalla) */
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+/* Estilo del Botón CTA Principal */
+.cta-primary-button {
+    background-color: var(--color-accent); 
+    color: var(--color-bg-primary) !important;
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    /* Sombra interna sutil para un look Y2K */
+    box-shadow: inset 0 0 0 2px var(--color-bg-primary); 
+}
+
+.cta-primary-button:hover {
+    /* Efecto hover: Invertir el color sutilmente o usar un color secundario */
+    background-color: var(--color-bg-secondary);
+    color: var(--color-accent) !important;
+    transform: scale(1.05); /* Ligeramente más grande */
+}
+/*
+|--------------------------------------------------------------------------
+| Estilos de la Sección de Productos Destacados
+|--------------------------------------------------------------------------
+| Contenedor principal de los productos.
+*/
+.featured-products {
+    padding: 60px 40px;
+    text-align: center; /* Centrar el título de la sección */
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    /* Línea decorativa para estética moderna */
+    border-bottom: 3px solid var(--color-accent);
+    display: inline-block; /* Ajusta el ancho de la línea al texto */
+    padding-bottom: 10px;
+    color: var(--color-text-primary);
+}
+
+
+/*
+|--------------------------------------------------------------------------
+| Estilos del GRID de Productos
+|--------------------------------------------------------------------------
+| Utiliza CSS Grid para crear una cuadrícula responsiva de tarjetas.
+*/
+.product-grid {
+    /* Display Grid: Activa el sistema de cuadrícula */
+    display: grid;
+    /* grid-template-columns: Crea 3 columnas de igual ancho (1fr) */
+    /* La función repeat() y minmax() ayuda a la responsividad en pantallas más pequeñas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Espacio entre las tarjetas */
+    max-width: 1300px;
+    margin: 0 auto; /* Centrar la cuadrícula */
+}
+
+/*
+|--------------------------------------------------------------------------
+| Estilos de la Tarjeta de Producto (Product Card)
+|--------------------------------------------------------------------------
+| Cada tarjeta representa una prenda individual.
+*/
+.product-card {
+    background-color: var(--color-bg-secondary);
+    border-radius: 10px;
+    overflow: hidden; /* Asegura que la imagen no desborde las esquinas redondeadas */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Borde sutil */
+}
+
+.product-card:hover {
+    /* Efecto hover: Ligeramente más grande y con sombra para resaltar */
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.product-image {
+    /* La imagen ocupa todo el ancho de la tarjeta */
+    width: 100%;
+    /* Altura fija para uniformidad, con ajuste de objeto */
+    height: 400px; 
+    object-fit: cover; /* Ajusta la imagen sin distorsionarla para cubrir el espacio */
+    display: block;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--color-accent);
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
+    opacity: 0.7;
+    margin-bottom: 15px;
+    /* Limitar la descripción a 3 líneas */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between; /* Precio a la izquierda, Botón a la derecha */
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.product-price {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+}
+
+/* El botón de 'Añadir' ya usa la clase .cta-button definida en el header */
+.add-to-cart-btn {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+/*
+|--------------------------------------------------------------------------
+| Estilos del FOOTER (Pie de Página)
+|--------------------------------------------------------------------------
+*/
+.main-footer {
+    /* Mismo color de fondo que el Header para coherencia */
+    background-color: var(--color-bg-secondary);
+    padding: 50px 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    /* Utiliza Grid para organizar las columnas de forma flexible */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 30px; /* Separación con la barra de copyright */
+}
+
+.footer-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-accent); /* Títulos en color de acento */
+    margin-bottom: 20px;
+}
+
+/* Estilos de las listas de enlaces */
+.quick-links ul {
+    display: flex;
+    flex-direction: column; /* Lista de enlaces vertical */
+    gap: 10px;
+}
+
+/* Estilo de los enlaces individuales */
+.footer-link,
+.social-link,
+.legal-link {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.footer-link:hover,
+.social-link:hover,
+.legal-link:hover {
+    color: var(--color-accent);
+    opacity: 1;
+}
+
+/* Estilos de la Columna de Redes Sociales */
+.social-icons {
+    display: flex;
+    gap: 20px; /* Espacio entre los enlaces de redes sociales */
+    flex-wrap: wrap; /* Para que se ajusten en pantallas pequeñas */
+}
+
+/* Estilos de la parte inferior (Copyright) */
+.footer-bottom {
+    /* Flexbox para alinear el texto de copyright y los enlaces legales */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+.legal-links {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.separator {
+    color: var(--color-accent);
+}
+
+/* Estilos adicionales para la info de marca */
+.brand-info p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.contact-detail {
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+/* Media Query: Diseño responsivo para el pie de página */
+@media (max-width: 768px) {
+    .footer-content {
+        /* En pantallas más pequeñas, se apilan las columnas */
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .brand-info,
+    .quick-links,
+    .social-media {
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    
+    .social-icons {
+        justify-content: center; /* Centrar los íconos */
+    }
+
+    .footer-bottom {
+        flex-direction: column; /* Apilar copyright y enlaces legales */
+        gap: 10px;
+        text-align: center;
+    }
+
+    .legal-links {
+        justify-content: center;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| Estilos de la SECCIÓN CONTACTO
+|--------------------------------------------------------------------------
+| Estilo de formulario moderno y en dos columnas.
+*/
+.contact-section {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Reutilizamos el estilo del título de sección del index.html */
+.contact-section .section-title {
+    margin-bottom: 50px;
+}
+
+/* Contenedor principal del formulario y la información */
+.contact-container {
+    display: flex;
+    gap: 50px;
+    text-align: left;
+    /* Aseguramos que se apilen en pantallas pequeñas */
+    flex-wrap: wrap; 
+}
+
+/* Columna de Información Adicional */
+.contact-info {
+    flex: 1; /* Ocupa el espacio restante */
+    background-color: var(--color-bg-secondary);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.contact-info h3 {
+    font-size: 1.6rem;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    color: var(--color-accent);
+}
+
+/* Contenedor del Formulario */
+.contact-form-wrapper {
+    flex: 2; /* El formulario ocupa más espacio (2/3 del total) */
+    padding: 30px 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group {
+    /* Por defecto, los campos ocupan la mitad del ancho (dos columnas) */
+    flex: 1 1 calc(50% - 10px); 
+    display: flex;
+    flex-direction: column;
+}
+
+/* El campo de mensaje debe ocupar todo el ancho (una columna) */
+.form-group.full-width {
+    flex: 1 1 100%;
+}
+
+.contact-form label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--color-accent);
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    /* Estilo de los campos de entrada: Limpio y opaco */
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    background-color: #3a3a3a; /* Fondo oscuro sutil */
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    /* Efecto al enfocar: resalta con el color de acento */
+    border-color: var(--color-accent);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(176, 176, 176, 0.3);
+}
+
+/* Estilo del botón de envío (reutiliza la clase CTA) */
+.contact-form .cta-primary-button {
+    margin-top: 10px;
+    width: 100%; /* El botón ocupa todo el ancho */
+}
+
+/* Media Query para responsividad del formulario */
+@media (max-width: 900px) {
+    .contact-container {
+        flex-direction: column; /* Apilar información y formulario */
+    }
+
+    .contact-form-wrapper {
+        padding: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    /* En móviles, todos los campos de texto ocupan todo el ancho */
+    .form-group {
+        flex: 1 1 100%;
+    }
+}
+/*
+|--------------------------------------------------------------------------
+| Estilos de la SECCIÓN ENVÍOS (Mapa y Texto)
+|--------------------------------------------------------------------------
+*/
+.envios-section {
+    padding: 80px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Reutilizamos el estilo del título de sección */
+.envios-section .section-title {
+    margin-bottom: 50px;
+}
+
+/* Contenedor del mapa y descripción (Grid para alinear) */
+.envios-content {
+    /* ESTO ES CLAVE: Activa la alineación en dos columnas (Mapa 2/3, Texto 1/3) */
+    display: grid;
+    grid-template-columns: 2fr 1fr; 
+    gap: 40px;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* Estilo del Contenedor del Mapa */
+.map-container {
+    background-color: var(--color-bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo del iframe (el mapa) */
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+    display: block;
+}
+
+/* Estilo de la Descripción de Envíos */
+.envios-description {
+    padding: 20px;
+}
+
+.envios-description h3 {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--color-bg-secondary);
+    padding-bottom: 10px;
+}
+
+.envios-description h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
+.envios-description p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.envios-description ul {
+    margin-left: 20px;
+    list-style-type: disc;
+    margin-bottom: 25px;
+}
+
+.envios-description li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.highlight {
+    color: var(--color-accent);
+    font-weight: 700;
+}
+
+.final-note {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Media Query para responsividad del mapa y descripción */
+@media (max-width: 900px) {
+    .envios-content {
+        /* En pantallas pequeñas, apilamos el mapa y el texto */
+        grid-template-columns: 1fr;
+    }
+
+    .envios-description {
+        padding: 0;
+    }
+}
